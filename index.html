@@ -4,6 +4,7 @@
 <link rel="canonical" href="https://silkcurtisplanning.com/services-overview">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#00853E">
+<link rel="preconnect" href="https://cdn.oncehub.com">
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Silk Curtis Planning">
@@ -748,7 +749,7 @@ section:first-child {
 	}
 }
 /* ---- Silk Curtis Planning brand layer (NPA brand kit) ---- */
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+/* PT Serif / PT Sans are embedded above as self-hosted @font-face — no external font request needed */
 
 :root{
   --npa-green:#00853E;      /* light green */
@@ -1015,12 +1016,35 @@ body{padding-bottom:82px}
 a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visible,.btn-primary:focus-visible,.btn-call:focus-visible,.tier-btn:focus-visible{outline:3px solid var(--npa-green);outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 #book{scroll-margin-top:20px}
+.tier{scroll-margin-top:24px}
+/* DIY tools pill is a live link */
+a.tier-plus{text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+a.tier-plus:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,133,62,0.42)}
+/* Sticky CTA stays hidden until the hero scrolls out of view (JS adds .show) */
+html.js-anim .sticky-cta{transform:translateY(105%);transition:transform .35s ease}
+html.js-anim .sticky-cta.show{transform:translateY(0)}
+.sticky-cta{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
 @media (max-width:560px){
   body{padding-bottom:150px}
   .sticky-cta{flex-direction:column;gap:6px;padding:11px 14px;text-align:center}
   .midcta a{width:100%}
 }
-</style></head>
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FinancialService","name":"Silk Curtis Planning","description":"Compare three ways to work with Silk Curtis Planning, a New Hampshire Registered Investment Adviser — DIY planning tools, a one-time advisor-built financial plan, and full-service wealth management. Your first meeting is complimentary.","url":"https://silkcurtisplanning.com/services-overview","telephone":"+1-603-431-1382","email":"dsilk@northeastplanning.com","address":{"@type":"PostalAddress","streetAddress":"121 Shattuck Way, Suite 16","addressLocality":"Newington","addressRegion":"NH","postalCode":"03801","addressCountry":"US"},"areaServed":{"@type":"State","name":"New Hampshire"},"parentOrganization":{"@type":"Organization","name":"Northeast Planning Associates, Inc."}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Are you a fiduciary, and what does that mean for me?","acceptedAnswer":{"@type":"Answer","text":"Yes — and it’s something we’re proud of. When we provide advisory services, we act as a fiduciary, which means we’re obligated to act in your best interest. As part of an independent Registered Investment Adviser, our advice is built around your goals and your family. When insurance or brokerage products are involved, we’ll always explain how we’re compensated so you can decide with confidence."}},
+{"@type":"Question","name":"How are your fees structured, and what will I actually pay?","acceptedAnswer":{"@type":"Answer","text":"Simple, transparent, and always in writing before you commit — no surprises. Our DIY model has no planning fee at all. Essential is a flat, one-time $1,500 fee for a complete, advisor-built plan that’s yours to keep. Premier is an all-in-one relationship billed as a percentage of the assets we manage that starts at 1.35% and decreases as your assets grow, covering both financial planning and active investment management. Your exact fee schedule is spelled out in your advisory agreement before you begin."}},
+{"@type":"Question","name":"Do I need a minimum amount of money to get started?","acceptedAnswer":{"@type":"Answer","text":"Not at all — the best time to start is now, wherever you are. Anyone can begin with our DIY tools and a complimentary discovery meeting, and Essential planning is available no matter your account size. Ongoing Premier portfolio management is available to get started with $250,000 invested. There’s a right place for everyone to begin."}},
+{"@type":"Question","name":"What happens at the free discovery meeting?","acceptedAnswer":{"@type":"Answer","text":"It’s the easy first step. A relaxed, no-cost, no-obligation conversation with a real, local advisor — not a sales pitch. We’ll get to know you, answer your questions, and help you see exactly which service model fits your life. You’ll walk away with clarity and a clear next step, whether or not you decide to work with us."}},
+{"@type":"Question","name":"Can I switch or upgrade service models later?","acceptedAnswer":{"@type":"Answer","text":"Of course — and many clients do. Each model is designed to build on the last, so you can start where you’re comfortable and grow with us over time. Even better: if you move up to Premier while we’re building your Essential plan, that one-time Essential fee is waived. You’re never tied to a long-term contract — just supported at every stage."}},
+{"@type":"Question","name":"What if I already have an advisor? How do I switch?","acceptedAnswer":{"@type":"Answer","text":"Switching is usually easier than people expect — and we handle the heavy lifting. In many cases your accounts can transfer “in kind” (as they are), through a mostly paperless process, and we coordinate directly with the receiving custodian so you’re not stuck making awkward calls. First, we’ll give you an honest, no-pressure review of what you have today — and if staying where you are truly makes more sense for you, we’ll tell you. There’s no cost to explore it, and you’re never obligated to move. Please note your current firm may charge account transfer or termination fees, certain holdings may not transfer in kind, and a transfer could have tax consequences — so we’d encourage you to consult your tax professional before making changes."}},
+{"@type":"Question","name":"Why work with you instead of a DIY app or robo-advisor?","acceptedAnswer":{"@type":"Answer","text":"DIY tools and robo-advisors can be a great starting point — in fact, we offer self-service tools too. But an algorithm can’t sit across from you when markets get bumpy, doesn’t know your family, and won’t proactively reach out about a tax opportunity or a major life change. Premier gives you a real, local advisor who builds a strategy around your goals and actively manages it — plus proactive, tax-aware planning, estate and legacy coordination, and priority access when life happens. Technology is a helpful tool; personal judgment and an ongoing relationship are the difference. Keep in mind all investing involves risk, including possible loss of principal, and no strategy or level of service can guarantee a profit or protect against loss."}}
+]}
+</script>
+</head>
 <body>
 <main class="notion-shell">
 
@@ -1060,8 +1084,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
     <article class="tier" id="tier-free">
       <div class="tier-head"><div class="tier-num" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h2>DIY</h2></div>
       <p class="tier-tag">Helpful tools and resources for those who like to take the lead.</p>
+      <a class="tier-plus" href="https://www.silkcurtisplanning.com/resource-center/calculators" target="_blank" rel="noopener">Free Financial Planning Tools &rarr;</a>
       <ul class="feat">
-        <li><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h4"/></svg><span>Model your future with our <strong>proprietary planning calculators</strong> &mdash; the same tools our advisors use</span></li>
+        <li><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h4"/></svg><span>Model your future with our <a href="https://www.silkcurtisplanning.com/resource-center/calculators" target="_blank" rel="noopener"><strong>proprietary planning calculators</strong></a> &mdash; the same tools our advisors use</span></li>
         <li><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span>See where you stand with a <strong>complimentary portfolio review</strong></span></li>
         <li><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong>Protect your family fast</strong> with self-service life insurance through Policygenius Pro</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span><strong>Put your wishes in writing</strong> with discounted estate planning through Trust &amp; Will</span></li>
@@ -1071,7 +1096,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
       <div class="tier-foot">
         <span class="label">No Advisory Fee</span>
         <span class="price">$0<sup>1</sup></span>
-        <small><sup>1</sup> Free to use our tools and to meet with us. Some optional third-party services may carry their own fees.</small>
+        <a class="tier-btn" href="#book">Start for free</a>
       </div>
     </article>
 
@@ -1091,7 +1116,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
       <div class="tier-foot">
         <span class="label">One-Time Fee</span>
         <span class="price">$1,500<sup>2</sup></span>
-        <small><sup>2</sup> Upgrade to Premier while we&rsquo;re building your plan and this fee is waived.</small>
+        <a class="tier-btn" href="#book">Book a free discovery meeting</a>
       </div>
     </article>
 
@@ -1114,7 +1139,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
       <div class="tier-foot">
         <span class="label">Annual Advisory Fee</span>
         <span class="price">1.35%<span style="font-size:0.6em;font-weight:700"> or less</span><sup>3</sup></span>
-        <small>Your rate is set by your assets, so it starts at 1.35% and steps down from there. The more we manage, the less you pay.</small>
+        <small>$250,000 minimum to get started</small>
+        <a class="tier-btn" href="#book">Book a free discovery meeting</a>
       </div>
     </article>
 
@@ -1166,7 +1192,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
         <tr><td><svg class="ci" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Family financial planning (literacy, budgeting, debt)</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
         <tr><td><svg class="ci" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Priority advisor access &amp; major life-event planning</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
         <tr><td><svg class="ci" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure client portal + account &amp; beneficiary maintenance</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="yes">&#10003;</td></tr>
-        <tr class="feerow"><td>Cost</td><td>$0</td><td>$1,500 one-time</td><td>Starts at 1.35% of assets managed</td></tr>
+        <tr class="feerow"><td>Cost</td><td>$0<sup>1</sup></td><td>$1,500 one-time<sup>2</sup></td><td>Starts at 1.35% of assets managed<sup>3</sup> &middot; $250,000 minimum</td></tr>
       </tbody>
     </table>
     </div>
@@ -1175,7 +1201,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
       <a href="#book">Book your free discovery meeting</a>
       <span class="reassure">No cost, no obligation.</span>
     </div>
-    <p class="note" style="margin-top:16px">Premier&rsquo;s all-in advisory fee starts at 1.35% and steps down as your managed assets grow &mdash; with a $5,000 minimum to get started. Active portfolio management and comprehensive planning are included, with no separate trading fees. Your exact fee schedule is outlined in your advisory agreement before you begin.</p>
+    <p class="note" style="margin-top:16px">Premier&rsquo;s all-in advisory fee starts at 1.35% and steps down as your managed assets grow &mdash; with a $250,000 minimum to get started. Active portfolio management and comprehensive planning are included, with no separate trading fees. Your exact fee schedule is outlined in your advisory agreement before you begin.</p>
   </section>
 
   <!-- Quiz -->
@@ -1261,7 +1287,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
 
       <details class="faq-item">
         <summary>Do I need a minimum amount of money to get started?</summary>
-        <div class="faq-a">Not at all &mdash; <strong>the best time to start is now</strong>, wherever you are. Anyone can begin with our <strong>DIY</strong> tools and a complimentary discovery meeting, and <strong>Essential</strong> planning is available <strong>no matter your account size</strong>. Ongoing <strong>Premier</strong> portfolio management is available to get started with as little as <strong>$5,000</strong> invested. There&rsquo;s a right place for everyone to begin.</div>
+        <div class="faq-a">Not at all &mdash; <strong>the best time to start is now</strong>, wherever you are. Anyone can begin with our <strong>DIY</strong> tools and a complimentary discovery meeting, and <strong>Essential</strong> planning is available <strong>no matter your account size</strong>. Ongoing <strong>Premier</strong> portfolio management is available to get started with <strong>$250,000</strong> invested. There&rsquo;s a right place for everyone to begin.</div>
       </details>
 
       <details class="faq-item">
@@ -1292,9 +1318,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
     <h2>Let&rsquo;s begin the conversation</h2>
     <p>Not sure which option is right for you? Your first discovery meeting is completely free &mdash; no cost, no obligation, no pressure. Pick a time that works for you below.</p>
     <div class="book-embed">
-      <!-- OnceHub inline embed START -->
-      <div data-oh-page-id="PAGE-253D7052FE" style="min-width:320px;height:700px;"></div>
-      <!-- OnceHub inline embed END -->
+      <!--booking calendar inline widget begin -->
+      <div data-oh-booking-calendar-id="BKC-Q45LV93N62" style="min-width:320px;height:700px;"></div>
+      <!--booking calendar inline widget end -->
     </div>
     <p class="book-fallback">Prefer to talk first? Call us at <a href="tel:+16034311382">(603) 431-1382</a> or email <a href="mailto:dsilk@northeastplanning.com">dsilk@northeastplanning.com</a>.</p>
   </section>
@@ -1302,8 +1328,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
   <!-- Disclosures -->
   <footer class="disclosure">
     <p class="foot-contact">Silk Curtis Planning &middot; 121 Shattuck Way, Suite 16, Newington, NH 03801 &middot; (603) 431-1382 &middot; dsilk@northeastplanning.com</p>
-    <p><sup>1</sup> No fees to use our tools or to meet with us for a discovery meeting. Some optional services &mdash; such as life insurance through Policygenius Pro or estate planning through Trust &amp; Will, and accounts opened online with a professionally managed portfolio &mdash; may carry separate or standard advisory fees.</p>
-    <p><sup>3</sup> Premier advisory fees are asset-based. 1.35% is the maximum annual advisory fee; the rate applicable to your account declines as assets under management increase under a tiered schedule. Account minimums apply. The specific fee that applies to you is described in your written advisory agreement.</p>
+    <p><sup>1</sup> Free to use our tools and to meet with us. Some optional third-party services may carry their own fees. Some optional services &mdash; such as life insurance through Policygenius Pro or estate planning through Trust &amp; Will, and accounts opened online with a professionally managed portfolio &mdash; may carry separate or standard advisory fees.</p>
+    <p><sup>2</sup> Upgrade to Premier while we&rsquo;re building your plan and this fee is waived.</p>
+    <p><sup>3</sup> Your rate is set by your assets, so it starts at 1.35% and steps down from there. The more we manage, the less you pay. Premier advisory fees are asset-based. 1.35% is the maximum annual advisory fee; the rate applicable to your account declines as assets under management increase under a tiered schedule. A $250,000 account minimum applies. The specific fee that applies to you is described in your written advisory agreement.</p>
     <p>Policygenius and Trust &amp; Will are independent third parties and are not affiliated with Northeast Planning Associates, Inc. or LPL Financial.</p>
     <p>Financial planning offered through Northeast Planning Associates, Inc. (NPA), a registered investment adviser (RIA). Securities and advisory services offered through LPL Financial (LPL), an RIA and broker-dealer (BD), member FINRA / SIPC. Insurance products are offered through LPL or its licensed affiliates.</p>
     <p>Advisory fees are described in your written advisory agreement. This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security. Investing involves risk, including possible loss of principal. No strategy assures success or protects against loss.</p>
@@ -1332,6 +1359,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
     items.forEach(function(el){io.observe(el);});
   } else { items.forEach(function(el){el.classList.add('in');}); }
 
+  // Decorative inline icons: hide from screen readers
+  [].slice.call(document.querySelectorAll('svg:not([aria-hidden])')).forEach(function(s){s.setAttribute('aria-hidden','true');s.setAttribute('focusable','false');});
+
+  // Sticky CTA: reveal only after the hero (with its own CTA) scrolls out of view
+  var hero=document.querySelector('.hero-c'),sticky=document.querySelector('.sticky-cta');
+  if(hero&&sticky&&'IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){sticky.classList.toggle('show',!e.isIntersecting);});},{threshold:0});
+    so.observe(hero);
+  } else if(sticky){ sticky.classList.add('show'); }
+
   // Quiz
   var q=document.getElementById('quiz');
   if(q){
@@ -1354,6 +1391,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.quiz-opt:focus-visib
 
 })();
 </script>
-<!-- OnceHub inline embed loader -->
+<!--booking calendar inline widget loader -->
 <script type="text/javascript" src="https://cdn.oncehub.com/cal/embed.js" async></script>
 </body></html>
