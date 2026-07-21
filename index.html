@@ -769,6 +769,16 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
   .compare tr.grouprow.acc[aria-expanded="true"] td::after{transform:translateY(-25%) rotate(-135deg)}
   .compare tr.acc-hidden{display:none}
 }
+
+/* ================= v4: landscape photo bands ================= */
+/* New England imagery between sections — decorative, cinematic crops */
+.photo-band{margin:44px 0 0}
+.photo-band img{display:block;width:100%;height:clamp(200px,34vw,360px);object-fit:cover;object-position:center;border-radius:16px;box-shadow:var(--notion-shadow)}
+.photo-band.photo-hero{margin-top:36px}
+.photo-band.photo-hero img{height:clamp(240px,42vw,440px)}
+@media(max-width:560px){.photo-band img{border-radius:12px}}
+/* Decorative bands add nothing on paper — save the ink */
+@media print{.photo-band{display:none}}
 </style>
 <!-- TODO: host a square logo at the URL below (or update the path) before launch -->
 <script type="application/ld+json">
@@ -804,7 +814,7 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
 
   <!-- Hero -->
   <section class="hero-c">
-    <span class="eyebrow">A Registered Investment Adviser</span>
+    <span class="eyebrow">Silk Curtis Planning Presents</span>
     <h1>Retire with a Plan, Not a Guess</h1>
     <hr class="rule">
     <p class="vprop">Local, independent, fiduciary &mdash; not a call center.</p>
@@ -823,6 +833,14 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       </div>
     </div>
   </section>
+
+  <!-- Hero image: the retirement you're planning for -->
+  <figure class="photo-band photo-hero">
+    <picture>
+      <source srcset="assets/img/lake-dock-chairs.webp" type="image/webp">
+      <img src="assets/img/lake-dock-chairs.jpg" width="1376" height="768" fetchpriority="high" alt="Two Adirondack chairs side by side on a wooden dock overlooking a calm, misty New England lake at sunrise">
+    </picture>
+  </figure>
 
   <!-- Tiers -->
   <section class="tier-grid">
@@ -910,6 +928,12 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
 
   <!-- Quiz -->
   <section class="quiz-wrap">
+    <figure class="photo-band">
+      <picture>
+        <source srcset="assets/img/country-road.webp" type="image/webp">
+        <img src="assets/img/country-road.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A winding dirt road bordered by old stone walls, curving through misty green New England hills">
+      </picture>
+    </figure>
     <div class="sec-h">
       <h2>Which Service Model Fits You?</h2>
       <hr class="rule">
@@ -1021,6 +1045,12 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       <span>Southern Maine</span>
       <span>Remote nationwide by video</span>
     </div>
+    <figure class="photo-band">
+      <picture>
+        <source srcset="assets/img/mountain-ridgeline.webp" type="image/webp">
+        <img src="assets/img/mountain-ridgeline.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="Layered ridgelines of New Hampshire's White Mountains receding into the haze at dusk">
+      </picture>
+    </figure>
     <div class="trust-grid">
       <div class="trust"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/></svg></div><h3>Pre-Retirees &amp; Retirees</h3><p>Retirement is in sight &mdash; or already here &mdash; and you want a clear income plan: when to take Social Security, how to draw down accounts tax-efficiently, and how to make your savings last.</p></div>
       <div class="trust"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div><h3>Growing Families &amp; Professionals</h3><p>You&rsquo;re balancing careers, kids, and a mortgage. We help you save with purpose &mdash; education funding, life &amp; disability protection, and a plan that keeps up as life speeds up.</p></div>
@@ -1076,6 +1106,12 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       <div class="how-step"><div class="num">2</div><div class="how-txt"><h3>Plan</h3><p>We build a personalized strategy around your goals &mdash; and, with Premier, actively manage it for you.</p></div></div>
       <div class="how-step"><div class="num">3</div><div class="how-txt"><h3>Grow Together</h3><p>Put your plan into action with clear next steps and ongoing guidance as your life changes.</p></div></div>
     </div>
+    <figure class="photo-band">
+      <picture>
+        <source srcset="assets/img/covered-bridge.webp" type="image/webp">
+        <img src="assets/img/covered-bridge.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A wooden covered bridge crossing a fog-covered river surrounded by autumn foliage">
+      </picture>
+    </figure>
   </section>
 
   <!-- Complimentary consultation band -->
@@ -1137,6 +1173,12 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       </details>
 
     </div>
+    <figure class="photo-band">
+      <picture>
+        <source srcset="assets/img/coastal-lighthouse.webp" type="image/webp">
+        <img src="assets/img/coastal-lighthouse.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A stone lighthouse standing on a rocky New England coastline at dawn">
+      </picture>
+    </figure>
   </section>
 
   <!-- CTA + inline scheduler -->
