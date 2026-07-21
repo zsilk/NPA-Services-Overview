@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://cdn.oncehub.com">
 <link rel="preload" href="assets/fonts/pt-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/pt-serif-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/lake-dock-chairs.webp" as="image" type="image/webp">
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Silk Curtis Planning">
@@ -774,11 +775,100 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
 /* New England imagery between sections — decorative, cinematic crops */
 .photo-band{margin:44px 0 0}
 .photo-band img{display:block;width:100%;height:clamp(200px,34vw,360px);object-fit:cover;object-position:center;border-radius:16px;box-shadow:var(--notion-shadow)}
-.photo-band.photo-hero{margin-top:36px}
-.photo-band.photo-hero img{height:clamp(240px,42vw,440px)}
 @media(max-width:560px){.photo-band img{border-radius:12px}}
 /* Decorative bands add nothing on paper — save the ink */
 @media print{.photo-band{display:none}}
+
+/* ================= v5: photo backdrops + section band rhythm ================= */
+/* Breaks up the all-white page: alternating full-bleed tinted bands and
+   photo-backed sections with AA-safe scrims. Content stays on the shell column. */
+
+/* Full-bleed helper — stretches a section's background to the viewport edges
+   while padding-inline restores the content to the shell column. 50vw includes
+   the scrollbar gutter, so html/body clip the half-scrollbar overshoot and no
+   horizontal scrolling is possible. */
+html,body{overflow-x:clip}
+.fullbleed{margin-inline:calc(50% - 50vw);padding-inline:calc(50vw - 50%)}
+
+/* Tinted bands — calm, paper-warm alternation between white sections */
+:root{--band-paper:#f6f4ef;--band-green:#e9f1ea}
+.band-tint{padding-block:58px 66px}
+.band-paper{background:var(--band-paper)}
+.band-green{background:var(--band-green)}
+.band-tint .sec-h,.band-photo .sec-h{margin-top:0}
+
+/* Photo backdrops — imagery genuinely behind the text.
+   background-attachment stays at its default (scroll): fixed is janky on mobile. */
+.band-photo{background-size:cover;background-position:center;background-repeat:no-repeat}
+.band-photo--dark{background-color:#0b1f14;color:#fff}
+.band-photo--dark .sec-h h2{color:#fff}
+.band-photo--dark .sec-h p{color:rgba(255,255,255,.95)}
+.band-photo--dark .sec-h .rule{background:#bfe6cf}
+
+/* Hero — misty lake behind the headline; heavy light scrim keeps the dark
+   brand text at ≥4.5:1 even over the darkest parts of the photo */
+.bg-lake{
+  margin-top:32px;
+  padding-block:60px 64px;
+  background-color:#eef3ef;
+  background-image:linear-gradient(180deg,rgba(252,253,252,.94) 0%,rgba(250,252,251,.88) 45%,rgba(247,251,249,.93) 100%),url("assets/img/lake-dock-chairs.jpg");
+}
+.bg-lake p{color:rgba(13,28,20,.78)}
+.bg-lake .vprop,.bg-lake .eyebrow,.bg-lake .free-tag{color:var(--npa-dark)}
+
+/* Quiz — country road behind the section header; the quiz card itself stays
+   a solid white surface on top of the photo */
+.bg-road{
+  padding-block:58px 66px;
+  background-image:linear-gradient(180deg,rgba(6,22,14,.88) 0%,rgba(6,22,14,.8) 50%,rgba(6,22,14,.55) 100%),url("assets/img/country-road.jpg");
+}
+
+/* Complimentary-consultation band — covered bridge behind light text */
+.freeband.bg-bridge{
+  border-radius:0;
+  padding-block:74px 80px;
+  background-color:#0b1f14;
+  background-image:linear-gradient(rgba(5,20,12,.8),rgba(5,20,12,.8)),url("assets/img/covered-bridge.jpg");
+}
+.bg-bridge .kicker{background:rgba(3,14,8,.5);border:1px solid rgba(255,255,255,.25)}
+.bg-bridge p,.bg-bridge .reassure{color:rgba(255,255,255,.95)}
+
+/* Final CTA — lighthouse behind the heading/prep cards; the scheduler embed
+   keeps its solid white surface so the widget never sits on a busy photo */
+.cta.bg-beacon{
+  border-radius:0;
+  padding-block:66px 74px;
+  background-color:#0b1f14;
+  background-image:linear-gradient(rgba(5,20,12,.82),rgba(5,20,12,.82)),url("assets/img/coastal-lighthouse.jpg");
+}
+.bg-beacon > p{color:rgba(255,255,255,.95)}
+.bg-beacon .meet-card{background:rgba(4,18,11,.55);border-color:rgba(255,255,255,.2)}
+.bg-beacon .meet-card .feat li{color:rgba(255,255,255,.93)}
+.bg-beacon .book-fallback{color:rgba(255,255,255,.95)}
+
+/* Serve the smaller webp when image-set(type()) is supported; jpg above is the fallback */
+@supports (background-image:image-set(url("assets/img/lake-dock-chairs.webp") type("image/webp"))){
+  .bg-lake{background-image:linear-gradient(180deg,rgba(252,253,252,.94) 0%,rgba(250,252,251,.88) 45%,rgba(247,251,249,.93) 100%),image-set(url("assets/img/lake-dock-chairs.webp") type("image/webp"),url("assets/img/lake-dock-chairs.jpg") type("image/jpeg"))}
+  .bg-road{background-image:linear-gradient(180deg,rgba(6,22,14,.88) 0%,rgba(6,22,14,.8) 50%,rgba(6,22,14,.55) 100%),image-set(url("assets/img/country-road.webp") type("image/webp"),url("assets/img/country-road.jpg") type("image/jpeg"))}
+  .freeband.bg-bridge{background-image:linear-gradient(rgba(5,20,12,.8),rgba(5,20,12,.8)),image-set(url("assets/img/covered-bridge.webp") type("image/webp"),url("assets/img/covered-bridge.jpg") type("image/jpeg"))}
+  .cta.bg-beacon{background-image:linear-gradient(rgba(5,20,12,.82),rgba(5,20,12,.82)),image-set(url("assets/img/coastal-lighthouse.webp") type("image/webp"),url("assets/img/coastal-lighthouse.jpg") type("image/jpeg"))}
+}
+
+/* Print: photo backdrops and tinted bands flatten to plain paper, dark text */
+@media print{
+  .fullbleed{margin-inline:0;padding-inline:0}
+  .band-tint,.band-photo{background:#fff !important;padding-block:0}
+  .band-photo--dark{color:#191918}
+  .band-photo--dark .sec-h h2,.freeband h3,.cta h2,.bg-beacon .meet-card h3{color:var(--npa-dark) !important}
+  .band-photo--dark .sec-h .rule{background:var(--npa-green)}
+  .band-photo--dark .sec-h p,.bg-bridge p,.bg-beacon > p,.bg-beacon .book-fallback,.bg-beacon .meet-card .feat li{color:rgba(0,0,0,.75) !important}
+  .bg-bridge .reassure,.cta .reassure,.freeband .reassure{color:var(--npa-dark) !important}
+  .bg-bridge .kicker{background:none;border:1px solid var(--npa-dark);color:var(--npa-dark)}
+  .bg-beacon .meet-card{background:#fff;border-color:rgba(0,0,0,.2)}
+  .bg-beacon .meet-card .feat li > svg{stroke:var(--npa-green)}
+  .freeband a,.cta a{border:1px solid var(--npa-dark)}
+  .sticky-cta,.to-top{display:none}
+}
 </style>
 <!-- TODO: host a square logo at the URL below (or update the path) before launch -->
 <script type="application/ld+json">
@@ -812,8 +902,8 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
     <div class="contact">121 Shattuck Way, Suite 16 &middot; Newington, NH 03801<br>(603) 431-1382 &middot; silkcurtisplanning.com</div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero-c">
+  <!-- Hero — misty lake backdrop behind the headline (light scrim, dark text) -->
+  <section class="hero-c fullbleed band-photo bg-lake">
     <span class="eyebrow">Silk Curtis Planning Presents</span>
     <h1>Retire with a Plan, Not a Guess</h1>
     <hr class="rule">
@@ -833,14 +923,6 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       </div>
     </div>
   </section>
-
-  <!-- Hero image: the retirement you're planning for -->
-  <figure class="photo-band photo-hero">
-    <picture>
-      <source srcset="assets/img/lake-dock-chairs.webp" type="image/webp">
-      <img src="assets/img/lake-dock-chairs.jpg" width="1376" height="768" fetchpriority="high" alt="Two Adirondack chairs side by side on a wooden dock overlooking a calm, misty New England lake at sunrise">
-    </picture>
-  </figure>
 
   <!-- Tiers -->
   <section class="tier-grid">
@@ -926,14 +1008,8 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
 
   </section>
 
-  <!-- Quiz -->
-  <section class="quiz-wrap">
-    <figure class="photo-band">
-      <picture>
-        <source srcset="assets/img/country-road.webp" type="image/webp">
-        <img src="assets/img/country-road.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A winding dirt road bordered by old stone walls, curving through misty green New England hills">
-      </picture>
-    </figure>
+  <!-- Quiz — country-road backdrop behind the header; quiz card stays a solid surface -->
+  <section class="quiz-wrap fullbleed band-photo band-photo--dark bg-road">
     <div class="sec-h">
       <h2>Which Service Model Fits You?</h2>
       <hr class="rule">
@@ -971,8 +1047,8 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
     </div>
   </section>
 
-  <!-- Comparison table -->
-  <section>
+  <!-- Comparison table — soft paper-tint band -->
+  <section class="fullbleed band-tint band-paper">
     <div class="sec-h">
       <h2>Compare Our Service Models</h2>
       <hr class="rule">
@@ -1059,8 +1135,8 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
     </div>
   </section>
 
-  <!-- Why an independent fiduciary -->
-  <section>
+  <!-- Why an independent fiduciary — deeper green-tint band -->
+  <section class="fullbleed band-tint band-green">
     <div class="sec-h">
       <h2>Why an Independent, Fiduciary Advisor</h2>
       <hr class="rule">
@@ -1106,16 +1182,10 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       <div class="how-step"><div class="num">2</div><div class="how-txt"><h3>Plan</h3><p>We build a personalized strategy around your goals &mdash; and, with Premier, actively manage it for you.</p></div></div>
       <div class="how-step"><div class="num">3</div><div class="how-txt"><h3>Grow Together</h3><p>Put your plan into action with clear next steps and ongoing guidance as your life changes.</p></div></div>
     </div>
-    <figure class="photo-band">
-      <picture>
-        <source srcset="assets/img/covered-bridge.webp" type="image/webp">
-        <img src="assets/img/covered-bridge.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A wooden covered bridge crossing a fog-covered river surrounded by autumn foliage">
-      </picture>
-    </figure>
   </section>
 
-  <!-- Complimentary consultation band -->
-  <section class="freeband">
+  <!-- Complimentary consultation — covered-bridge backdrop, dark scrim, light text -->
+  <section class="freeband fullbleed band-photo band-photo--dark bg-bridge">
     <span class="kicker">Complimentary</span>
     <h3>Your First Consultation Is Complimentary</h3>
     <p>Sit down with a dedicated, local advisor for a complimentary discovery meeting. No cost, no obligation &mdash; just a clear, confident next step for your finances.</p>
@@ -1123,8 +1193,8 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
     <span class="reassure">No cost, no obligation &mdash; just a conversation.</span>
   </section>
 
-  <!-- FAQ -->
-  <section>
+  <!-- FAQ — soft paper-tint band -->
+  <section class="fullbleed band-tint band-paper">
     <div class="sec-h">
       <h2>Frequently Asked Questions</h2>
       <hr class="rule">
@@ -1173,16 +1243,10 @@ html.js-anim .sticky-cta.show{transform:translateY(0)}
       </details>
 
     </div>
-    <figure class="photo-band">
-      <picture>
-        <source srcset="assets/img/coastal-lighthouse.webp" type="image/webp">
-        <img src="assets/img/coastal-lighthouse.jpg" width="1376" height="768" loading="lazy" decoding="async" alt="A stone lighthouse standing on a rocky New England coastline at dawn">
-      </picture>
-    </figure>
   </section>
 
-  <!-- CTA + inline scheduler -->
-  <section class="cta" id="book">
+  <!-- CTA + inline scheduler — lighthouse backdrop; scheduler keeps its solid white surface -->
+  <section class="cta fullbleed band-photo band-photo--dark bg-beacon" id="book">
     <h2>Let&rsquo;s begin the conversation</h2>
     <p>Not sure which option is right for you? Your first discovery meeting is completely free &mdash; no cost, no obligation, no pressure. Pick a time that works for you below.</p>
     <div class="meet-grid">
